@@ -1,4 +1,4 @@
-[![pipeline status](https://github.com/Alphaport-OG/nestjs-email/actions/workflows/npm-publish/badge.svg)](https://github.com/alphaport-og/nestjs-email/commits/main)
+[![pipeline status](https://github.com/Alphaport-OG/nestjs-email/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/alphaport-og/nestjs-email/commits/main)
 
 
 [![npm](https://img.shields.io/npm/v/nestjs-email)](https://www.npmjs.com/package/nestjs-email)
