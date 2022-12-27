@@ -31,7 +31,11 @@ describe('Message generator', () => {
 
       expect(await generator.generate(template, params)).toEqual(compiled);
 
-      expect(engine.compile).toBeCalledWith({ engine, templateDir }, template, params);
+      expect(engine.compile).toBeCalledWith(
+        { engine, templateDir },
+        template,
+        params,
+      );
     });
 
     it('should compile the template and compile through MJML - use default options', async () => {
@@ -57,7 +61,11 @@ describe('Message generator', () => {
 
       expect(await generator.generate(template, params)).toEqual(mjmlCompiled);
 
-      expect(engine.compile).toBeCalledWith({ templateDir, engine }, template, params);
+      expect(engine.compile).toBeCalledWith(
+        { templateDir, engine },
+        template,
+        params,
+      );
     });
 
     it('should compile the template and compile through MJML - use configured options', async () => {
@@ -89,7 +97,11 @@ describe('Message generator', () => {
 
       expect(await generator.generate(template, params)).toEqual(mjmlCompiled);
 
-      expect(engine.compile).toBeCalledWith({ engine, templateDir, mjmlOpts }, template, params);
+      expect(engine.compile).toBeCalledWith(
+        { engine, templateDir, mjmlOpts },
+        template,
+        params,
+      );
     });
   });
 

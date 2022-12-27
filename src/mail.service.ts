@@ -36,7 +36,7 @@ export default class EmailService {
     };
     const logo = `${domain}/logo.png`;
     await this.mail(opts, {
-      template: join(__dirname, 'assets', 'templates', template),
+      template: join(this.options.templatePath, template),
       params: { user: params, ...today, link, logo },
     });
   }
@@ -56,7 +56,7 @@ export default class EmailService {
     };
     const logo = `${domain}/logo.png`;
     await this.mail(opts, {
-      template: join(__dirname, 'assets', 'templates', template),
+      template: join(this.options.templatePath, template),
       params: { user, event, message, ...today, link, logo },
     });
   }

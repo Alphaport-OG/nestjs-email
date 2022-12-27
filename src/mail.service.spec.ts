@@ -11,12 +11,12 @@ describe('Messenger service', () => {
         verify: jest.fn(),
       },
     };
-    messenger = new EmailService(messengerTransports);
+    messenger = new EmailService(messengerTransports, {});
   });
 
   describe('#emailIsConfigured', () => {
     it('should return false if email not configured', () => {
-      messenger = new EmailService({});
+      messenger = new EmailService({}, {});
 
       expect(messenger.emailIsConfigured()).toBe(false);
     });
@@ -27,7 +27,7 @@ describe('Messenger service', () => {
 
   describe('#mail', () => {
     it('should error if no email transport configured', async () => {
-      messenger = new EmailService({});
+      messenger = new EmailService({}, {});
 
       try {
         await messenger.mail({});
@@ -54,12 +54,12 @@ describe('Messenger service', () => {
       expect(
         await messenger.mail(opts, {
           template,
-        })
+        }),
       ).toBe(true);
 
       expect(messengerTransports.emailTemplate.generate).toBeCalledWith(
         template,
-        {}
+        {},
       );
 
       expect(messengerTransports.emailTransport.sendMail).toBeCalledWith({
@@ -88,12 +88,12 @@ describe('Messenger service', () => {
         await messenger.mail(opts, {
           template,
           params,
-        })
+        }),
       ).toBe(true);
 
       expect(messengerTransports.emailTemplate.generate).toBeCalledWith(
         template,
-        params
+        params,
       );
 
       expect(messengerTransports.emailTransport.sendMail).toBeCalledWith({
@@ -115,7 +115,7 @@ describe('Messenger service', () => {
 
   describe('#verifyEmailConnection', () => {
     it('should error if no email transport configured', async () => {
-      messenger = new EmailService({});
+      messenger = new EmailService({}, {});
 
       try {
         await messenger.verifyEmailConnection();
@@ -137,7 +137,7 @@ describe('Messenger service', () => {
         throw new Error('invalid');
       } catch (err) {
         expect(err).toEqual(
-          new Error('Unable to verify email transport connection')
+          new Error('Unable to verify email transport connection'),
         );
 
         expect(messengerTransports.emailTransport.verify).toBeCalledWith();
