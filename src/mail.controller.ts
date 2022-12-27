@@ -12,14 +12,9 @@ export class MailController {
   async sendMail(@Param('template') template: string) {
     await this.mailService.sendMail(
       {},
-      { to: 'sebastian.geschke@alphaport.at', from: process.env.SMTP_USER },
+      { to: process.env.SMTP_USER, from: process.env.SMTP_USER },
       template,
-      '',
     );
-    // await this.mailService.sendMail(
-    //   { to: 'sebastian.geschke@alphaport.at', from: process.env.SMTP_USER },
-    //   { template: join(__dirname, 'templates', template), params: { ...today } }
-    // );
     return 'OK';
   }
 }

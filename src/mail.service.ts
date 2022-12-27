@@ -23,41 +23,20 @@ export default class EmailService {
     return !!this.messengerTransports.emailTransport;
   }
 
-  async sendMail(
-    params: JsonObject,
-    opts: Mail.Options,
-    template: string,
-    domain: string,
-    link?: string,
-  ) {
+  /**
+   *
+   * @param params Arbitrary JSON parameters passed to the mjml handlebars template
+   * @param opts Mail sender options (e.g. to:,)
+   * @param template Name of the mjml template (must be present in templateDir)
+   */
+  async sendMail(params: JsonObject, opts: Mail.Options, template: string) {
     const now = new Date(Date.now());
     const today = {
       today: `${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}`,
     };
-    const logo = `${domain}/logo.png`;
     await this.mail(opts, {
       template: join(this.options.templatePath, template),
-      params: { user: params, ...today, link, logo },
-    });
-  }
-
-  async sendMessageMail(
-    user: JsonObject,
-    event: JsonObject,
-    message: string,
-    opts: Mail.Options,
-    template: string,
-    domain: string,
-    link?: string,
-  ) {
-    const now = new Date(Date.now());
-    const today = {
-      today: `${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}`,
-    };
-    const logo = `${domain}/logo.png`;
-    await this.mail(opts, {
-      template: join(this.options.templatePath, template),
-      params: { user, event, message, ...today, link, logo },
+      params: { ...params, ...today },
     });
   }
 
