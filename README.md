@@ -1,7 +1,5 @@
-[![pipeline status](https://github.com/Alphaport-OG/nestjs-email/actions/workflows/node.js.yml/badge.svg)](https://github.com/alphaport-og/nestjs-email/commits/main)
-
-[![publish status](https://github.com/Alphaport-OG/nestjs-email/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/alphaport-og/nestjs-email/commits/main)
-
+[![pipeline status](https://github.com/alphaport-multimedia/nestjs-email/actions/workflows/node.js.yml/badge.svg)](https://github.com/alphaport-multimedia/nestjs-email/commits/main)
+[![publish status](https://github.com/alphaport-multimedia/nestjs-email/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/alphaport-multimedia/nestjs-email/commits/main)
 [![npm](https://img.shields.io/npm/v/nestjs-email)](https://www.npmjs.com/package/nestjs-email)
 
 `nestjs-email` is a [NestJS](https://nestjs.com/) module that provides an nodemailer integration together with [mjml](https://mjml.io/)
